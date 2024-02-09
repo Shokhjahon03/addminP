@@ -48,16 +48,6 @@
       "id": "13"
     },
     {
-      "createdAt": 1706969962,
-      "firstName": "firstName 14",
-      "age": 48,
-      "lastName": "lastName 14",
-      "group": "group 14",
-      "teacher": "teacher 14",
-      "avatar": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/227.jpg",
-      "id": "14"
-    },
-    {
       "createdAt": 1706969902,
       "firstName": "firstName 15",
       "age": 4,
@@ -400,12 +390,6 @@
   ],
   "teachers": [
     {
-      "id": "2",
-      "lastName": "Lannister",
-      "firstName": "Cersei",
-      "age": 42
-    },
-    {
       "id": "3",
       "lastName": "Lannister",
       "firstName": "Jaime",
@@ -422,12 +406,6 @@
       "lastName": "Melisandre",
       "firstName": "John",
       "age": 150
-    },
-    {
-      "id": "bc0e",
-      "firstName": "sa",
-      "lastName": "d",
-      "age": "f"
     }
   ]
 }

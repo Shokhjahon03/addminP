@@ -14,6 +14,11 @@ import Actions2 from '../components/Actions2';
 import axios from 'axios';
 import Addteachers from '../components/addteachers';
 
+
+import {techdataerr,techdataxios,techsucces} from '../redux/teach/teachersAction'
+import { useDispatch, useSelector } from 'react-redux';
+
+
 const columns = [
   { field: 'id', headerName: 'ID', width: 70 },
   { field: 'firstName', headerName: 'First name', width: 130 },
@@ -42,23 +47,47 @@ const columns = [
 
 
 const Teachers = () => {
+  // const dispatch = useDispatch();
+  // const { loading, users, error } = useSelector((state) => state.user);
 
   let [y,setY]=useState(0)
   let [rows,setRows] = useState([]) ;
   let [addtech,setadd]=useState(true)
   let [addoredit,setaddoredit]=useState(true)
   let[itemsID,setItemsId]=useState('')
-  let axiosteachers=async ()=>{
+
+  const dispatch = useDispatch();
+  const state = useSelector((state) => state.users);
+  // let axiosteachers=async ()=>{
+  //   try {
+  //    let res=await axios.get('http://localhost:3000/teachers')
+  //    let datas=await res.data
+  //    setRows(datas)
+  //   } catch (error) {
+  //    console.log(error);
+  //   }
+  //  }
+  // ..................................
+
+  const fetchUsers = async () => {
+    dispatch(techdataxios());
     try {
-     let res=await axios.get('http://localhost:3000/teachers')
-     let datas=await res.data
-     setRows(datas)
+      const res = await axios.get('http://localhost:3000/teachers');
+      const data = await res.data;
+      dispatch(techsucces(data));
     } catch (error) {
-     console.log(error);
+      dispatch(techdataerr(error.message));
     }
-   }
+  };
+
+ 
+
+
+  // ..................................
    let editetitemsID=(id)=>{
     setItemsId(id)
+    
+
     
   }
   let daletItimest=async (id)=>{
@@ -69,10 +98,20 @@ const Teachers = () => {
     // alert('item uchirildi')
     }
   }
+  // setRows(state)
+  useEffect(()=>{
+    // setRows(state)
+    // fetchUsers()
+  },[])
+ 
    useEffect(()=>{
-    axiosteachers()
+    // axiosteachers()
+    setRows(state)
+
+    fetchUsers()
   },[y])
 
+  
 
 const mappedRows = rows.map((row) => ({ ...row, actions: <Actions2 /> }));
   return (
