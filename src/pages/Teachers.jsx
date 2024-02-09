@@ -74,6 +74,7 @@ const Teachers = () => {
     try {
       const res = await axios.get('http://localhost:3000/teachers');
       const data = await res.data;
+      setY(y+100)
       dispatch(techsucces(data));
     } catch (error) {
       dispatch(techdataerr(error.message));
